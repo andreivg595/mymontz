@@ -1,0 +1,14 @@
+<form *ngIf="form" [formGroup]="form" (ngSubmit)="formEvent.emit(form)">
+  <ion-item>
+    <ion-label position="floating">Username</ion-label>
+    <ion-input type="text" [formControl]="usernameControl"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" [formControl]="passwordControl"></ion-input>
+  </ion-item>
+  <ion-button type="submit" color="primary" size="full" [disabled]="!form.valid"
+    >Login</ion-button
+  >
+  <ion-button color="tertiary" size="full">Register</ion-button>
+</form>
