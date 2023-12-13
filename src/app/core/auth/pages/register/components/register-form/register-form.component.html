@@ -1,22 +1,72 @@
-<form *ngIf="form" [formGroup]="form" (ngSubmit)="formEvent.emit(form)">
+<form
+  *ngIf="form"
+  [formGroup]="form"
+  (ngSubmit)="formEvent.emit(form)"
+  class="register-form-container"
+>
   <ion-item>
-    <ion-label position="floating">Email</ion-label>
-    <ion-input type="email" [formControl]="emailControl"></ion-input>
+    <ion-input
+      label="Email"
+      aria-label="Email"
+      label-placement="floating"
+      errorText="Invalid email"
+      type="email"
+      color="tertiary"
+      [formControl]="emailControl"
+    ></ion-input>
+    <ion-icon
+      slot="end"
+      name="mail-outline"
+      aria-hidden="true"
+      color="medium"
+    ></ion-icon>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Username</ion-label>
-    <ion-input type="text" [formControl]="usernameControl"></ion-input>
+    <ion-input
+      label="Username"
+      aria-label="Username"
+      label-placement="floating"
+      type="text"
+      color="tertiary"
+      [formControl]="usernameControl"
+    ></ion-input>
+    <ion-icon
+      slot="end"
+      name="person-circle-outline"
+      aria-hidden="true"
+      color="medium"
+    ></ion-icon>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Password</ion-label>
-    <ion-input type="password" [formControl]="passwordControl"></ion-input>
+    <ion-input
+      label="Password"
+      aria-label="Password"
+      label-placement="floating"
+      errorText="Minimum of 6 characters"
+      type="password"
+      color="tertiary"
+      [formControl]="passwordControl"
+    ></ion-input>
+    <ion-icon
+      slot="end"
+      name="lock-closed"
+      aria-hidden="true"
+      color="medium"
+    ></ion-icon>
   </ion-item>
   <ion-button
     type="submit"
     color="tertiary"
     size="full"
+    shape="round"
     [disabled]="!form.valid"
     >Register</ion-button
   >
-  <ion-button color="primary" size="full">Login</ion-button>
+  <ion-button
+    color="primary"
+    size="full"
+    shape="round"
+    (click)="navigateToLogin()"
+    >Login</ion-button
+  >
 </form>

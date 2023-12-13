@@ -1,14 +1,54 @@
-<form *ngIf="form" [formGroup]="form" (ngSubmit)="formEvent.emit(form)">
+<form
+  *ngIf="form"
+  [formGroup]="form"
+  (ngSubmit)="formEvent.emit(form)"
+  class="login-form-container"
+>
   <ion-item>
-    <ion-label position="floating">Username</ion-label>
-    <ion-input type="text" [formControl]="usernameControl"></ion-input>
+    <ion-input
+      label="Username"
+      aria-label="Username"
+      label-placement="floating"
+      type="text"
+      color="tertiary"
+      [formControl]="usernameControl"
+    ></ion-input>
+    <ion-icon
+      slot="end"
+      name="person-circle-outline"
+      aria-hidden="true"
+      color="medium"
+    ></ion-icon>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Password</ion-label>
-    <ion-input type="password" [formControl]="passwordControl"></ion-input>
+    <ion-input
+      label="Password"
+      aria-label="Password"
+      label-placement="floating"
+      type="password"
+      color="tertiary"
+      [formControl]="passwordControl"
+    ></ion-input>
+    <ion-icon
+      slot="end"
+      name="lock-closed"
+      aria-hidden="true"
+      color="medium"
+    ></ion-icon>
   </ion-item>
-  <ion-button type="submit" color="primary" size="full" [disabled]="!form.valid"
+  <ion-button
+    type="submit"
+    color="primary"
+    size="full"
+    shape="round"
+    [disabled]="!form.valid"
     >Login</ion-button
   >
-  <ion-button color="tertiary" size="full">Register</ion-button>
+  <ion-button
+    color="tertiary"
+    size="full"
+    shape="round"
+    (click)="navigateToRegister()"
+    >Register</ion-button
+  >
 </form>

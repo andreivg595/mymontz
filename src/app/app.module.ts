@@ -11,13 +11,17 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { HttpClientModule } from '@angular/common/http';
+import { AppStoreModule } from './core/store/AppStoreModule';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     CoreModule,
+    ...AppStoreModule,
     IonicModule.forRoot(),
     SharedModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),

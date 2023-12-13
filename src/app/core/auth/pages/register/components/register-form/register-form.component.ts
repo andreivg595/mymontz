@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
@@ -20,5 +21,11 @@ export class RegisterFormComponent {
 
   get passwordControl(): FormControl {
     return this.form?.get('password') as FormControl;
+  }
+
+  constructor(private router: Router) {}
+
+  navigateToLogin(): void {
+    this.router.navigateByUrl('/login');
   }
 }
