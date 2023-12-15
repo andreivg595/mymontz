@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { AuthenticationResponse } from '../../models/authentication-response.model';
 
 export const login = createAction(
   '[Login Page] Login',
@@ -7,7 +8,7 @@ export const login = createAction(
 
 export const loginSuccess = createAction(
   '[Login API] Login Success',
-  props<{ readonly user: any }>()
+  props<{ readonly authenticationResponse: AuthenticationResponse }>()
 );
 
 export const loginFailure = createAction(

@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -12,7 +6,6 @@ import { Router } from '@angular/router';
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class LoginFormComponent {
   @Input() form: FormGroup | undefined;

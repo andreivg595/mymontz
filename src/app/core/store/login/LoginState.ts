@@ -1,5 +1,8 @@
+import { User } from '../../models/user.model';
+
 export interface LoginState {
-  user: any;
+  token: string | null;
+  user: User | null;
   error: any;
   isLoggedIn: boolean;
   isLoggingIn: boolean;

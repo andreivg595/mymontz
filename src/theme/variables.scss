@@ -256,4 +256,7 @@ html {
   ion-button {
     --border-radius: 10px !important;
   }
+  ion-tab-button.tab-selected {
+    --color-selected: var(--ion-color-tertiary);
+  }
 }
