@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
 import { AppState } from 'src/app/core/store/AppState';
 import { hide, show } from 'src/app/core/store/loading/loading.actions';
 import { purge, register } from 'src/app/core/store/register/register.actions';
-import { getRegister } from 'src/app/core/store/register/register.selector';
+import { getRegister } from 'src/app/core/store/register/register.selectors';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +15,7 @@ import { getRegister } from 'src/app/core/store/register/register.selector';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit, OnDestroy {
-  register$ = this.store.pipe(select(getRegister));
+  readonly register$ = this.store.pipe(select(getRegister));
   form: FormGroup | undefined;
   subscription: Subscription | undefined;
 

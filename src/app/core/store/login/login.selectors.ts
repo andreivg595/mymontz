@@ -9,3 +9,10 @@ export const getIsLoggedIn = createSelector(
   selectLoginState,
   (state) => state.isLoggedIn
 );
+
+export const getToken = createSelector(
+  selectLoginState,
+  (state) => state.token
+);
+
+export const getUser = createSelector(selectLoginState, (state) => state.user);

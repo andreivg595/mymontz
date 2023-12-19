@@ -3,7 +3,7 @@ import { AuthenticationResponse } from '../../models/authentication-response.mod
 
 export const login = createAction(
   '[Login Page] Login',
-  props<{ username: string; password: string }>()
+  props<{ readonly username: string; readonly password: string }>()
 );
 
 export const loginSuccess = createAction(

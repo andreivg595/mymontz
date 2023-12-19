@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { LoadingState } from 'src/app/core/store/loading/LoadingState';
-import { getLoadingState } from 'src/app/core/store/loading/loading.selector';
+import { getLoadingState } from 'src/app/core/store/loading/loading.selectors';
 
 @Component({
   selector: 'app-loading',

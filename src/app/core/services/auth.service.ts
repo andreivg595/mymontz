@@ -26,4 +26,9 @@ export class AuthService {
       user
     );
   }
+
+  getToken(): string | null {
+    const state = JSON.parse(localStorage.getItem('state') || '{}');
+    return state.token;
+  }
 }

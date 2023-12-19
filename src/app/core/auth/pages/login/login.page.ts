@@ -1,21 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Store, select } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { AppState } from 'src/app/core/store/AppState';
 import { hide, show } from 'src/app/core/store/loading/loading.actions';
 import { login } from 'src/app/core/store/login/login.actions';
-import { getLogin } from 'src/app/core/store/login/login.selector';
+import { getLogin } from 'src/app/core/store/login/login.selectors';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
-  login$ = this.store.pipe(select(getLogin));
+export class LoginPage implements OnInit, OnDestroy {
+  readonly login$ = this.store.pipe(select(getLogin));
   form: FormGroup | undefined;
+  subscription: Subscription | undefined;
 
   constructor(
     private fb: FormBuilder,
@@ -27,6 +29,10 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.initForm();
     this.checkLogin();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 
   private initForm(): void {
@@ -42,7 +48,7 @@ export class LoginPage implements OnInit {
   }
 
   private checkLogin() {
-    this.login$.subscribe((state) => {
+    this.subscription = this.login$.subscribe((state) => {
       if (state.isLoggingIn) {
         this.store.dispatch(show());
       } else {

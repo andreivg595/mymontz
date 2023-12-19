@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Router, UrlTree } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { Observable, map, of, switchMap, take } from 'rxjs';
+import { Observable, map, take } from 'rxjs';
 import { AppState } from '../store/AppState';
-import { getIsLoggedIn, getLogin } from '../store/login/login.selector';
+import { getIsLoggedIn } from '../store/login/login.selectors';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard {
-  isLoggedIn$ = this.store.pipe(select(getIsLoggedIn));
+  readonly isLoggedIn$ = this.store.pipe(select(getIsLoggedIn));
 
   constructor(private store: Store<AppState>, private router: Router) {}
 

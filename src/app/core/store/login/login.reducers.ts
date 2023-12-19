@@ -35,7 +35,7 @@ function getUser(token: string): User {
   const decoded = jwtDecode(token) as JwtPayload;
   const user: User = {
     id: decoded.id,
-    username: decoded.username,
+    username: decoded.sub,
     email: decoded.email,
     role: decoded.role,
   };
@@ -46,7 +46,6 @@ interface JwtPayload {
   iss?: string;
   sub?: string;
   id?: number;
-  username?: string;
   email?: string;
   role?: Role;
   aud?: string[] | string;

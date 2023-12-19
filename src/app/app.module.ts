@@ -11,8 +11,9 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppStoreModule } from './core/store/AppStoreModule';
+import { AuthInterceptor } from './core/services/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +27,10 @@ import { AppStoreModule } from './core/store/AppStoreModule';
     SharedModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

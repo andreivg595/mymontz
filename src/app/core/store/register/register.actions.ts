@@ -2,7 +2,11 @@ import { createAction, props } from '@ngrx/store';
 
 export const register = createAction(
   '[Register Page] Register',
-  props<{ email: string; username: string; password: string }>()
+  props<{
+    readonly email: string;
+    readonly username: string;
+    readonly password: string;
+  }>()
 );
 
 export const registerSuccess = createAction(
