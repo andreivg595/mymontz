@@ -1,0 +1,61 @@
+<form
+  *ngIf="form"
+  [formGroup]="form"
+  (ngSubmit)="formEvent.emit(form)"
+  class="expense-form-container"
+>
+  <div class="expense-form-container__fields">
+    <ion-select
+      label="Category *"
+      label-placement="floating"
+      fill="solid"
+      [formControl]="categoryControl"
+    >
+      <ng-container *ngFor="let category of expenseCategories">
+        <ion-select-option [value]="category.id">{{
+          category.type
+        }}</ion-select-option>
+      </ng-container>
+    </ion-select>
+    <ion-item>
+      <ion-input
+        label="Amount *"
+        aria-label="Amount"
+        label-placement="floating"
+        type="number"
+        [formControl]="amountControl"
+      ></ion-input>
+      <ion-icon
+        slot="end"
+        name="cash-outline"
+        aria-hidden="true"
+        color="medium"
+      ></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        label="Note"
+        aria-label="Note"
+        label-placement="floating"
+        type="text"
+        [formControl]="noteControl"
+      ></ion-input>
+      <ion-icon
+        slot="end"
+        name="clipboard-outline"
+        aria-hidden="true"
+        color="medium"
+      ></ion-icon>
+    </ion-item>
+  </div>
+  <div class="expense-form-container__button">
+    <ion-button
+      type="submit"
+      color="primary"
+      size="full"
+      shape="round"
+      [disabled]="!form.valid"
+      >Save</ion-button
+    >
+  </div>
+</form>

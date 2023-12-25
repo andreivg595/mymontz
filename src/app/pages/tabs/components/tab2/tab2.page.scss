@@ -1,0 +1,11 @@
+.expense-container {
+  @apply mt-3 flex items-center justify-center;
+
+  &__modal {
+    @apply w-full h-[40vh] items-center justify-center;
+  }
+}
+
+ion-modal {
+  --height: auto;
+}

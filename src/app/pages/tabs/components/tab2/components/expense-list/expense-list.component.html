@@ -1,0 +1,9 @@
+<ion-list *ngIf="expenses?.length">
+  <ion-item *ngFor="let expense of expenses; let index">
+    <ion-avatar slot="start">
+      <img [src]="'https://picsum.photos/80/80?random=' + index" alt="avatar" />
+    </ion-avatar>
+    <ion-label>{{ expense.amount }} €</ion-label>
+    <ion-label>{{ expense.note }}</ion-label>
+  </ion-item>
+</ion-list>

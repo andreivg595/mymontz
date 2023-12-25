@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title> Mymontz </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,5 +11,16 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="mymontz-container">
+    <div class="mymontz-container__title">
+      Welcome
+      <span class="mymontz-container__title__username">
+        {{ user?.username }}</span
+      >!
+    </div>
+    <div class="mymontz-container__today">Today: 0€</div>
+    <div class="mymontz-container__yesterday">Yesterday: 0€</div>
+    <div class="mymontz-container__week">This week: 0€</div>
+    <div class="mymontz-container__month">This month: 0€</div>
+  </div>
 </ion-content>

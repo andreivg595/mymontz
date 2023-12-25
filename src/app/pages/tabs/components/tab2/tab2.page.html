@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title> Tab 2 </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,5 +11,41 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <div class="expense-container">
+    <ion-datetime-button datetime="dateTime"></ion-datetime-button>
+
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime
+          id="dateTime"
+          presentation="date"
+          [preferWheel]="true"
+          [(ngModel)]="dateTime"
+          (ngModelChange)="modelChangeFn($event)"
+        ></ion-datetime>
+      </ng-template>
+    </ion-modal>
+
+    <ion-button id="open-modal" color="tertiary" size="full" shape="round"
+      >Add expense</ion-button
+    >
+  </div>
+
+  <app-expense-list [expenses]="expenses$ | async"></app-expense-list>
+
+  <ion-modal
+    trigger="open-modal"
+    [initialBreakpoint]="1"
+    [breakpoints]="[0, 1]"
+  >
+    <ng-template>
+      <div class="expense-container__modal">
+        <app-expense-form
+          [form]="form"
+          [expenseCategories]="expenseCategories$ | async"
+          (formEvent)="onSubmit($event)"
+        ></app-expense-form>
+      </div>
+    </ng-template>
+  </ion-modal>
 </ion-content>

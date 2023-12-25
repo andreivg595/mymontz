@@ -1,0 +1,11 @@
+.mymontz-container {
+  @apply h-full w-full flex justify-center items-center flex-col;
+
+  &__title {
+    @apply text-2xl;
+
+    &__username {
+      color: var(--ion-color-tertiary);
+    }
+  }
+}

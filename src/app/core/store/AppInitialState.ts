@@ -16,4 +16,10 @@ export const AppInitialState: AppState = {
     isLoggedIn: false,
     isLoggingIn: false,
   },
+  expenses: {
+    expenses: [],
+  },
+  expenseCategories: {
+    expenseCategories: [],
+  },
 };

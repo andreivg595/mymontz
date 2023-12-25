@@ -6,6 +6,10 @@ import { loginReducer } from './login/login.reducers';
 import { RegisterEffects } from './register/register.effects';
 import { LoginEffects } from './login/login.effects';
 import { LoginState } from './login/LoginState';
+import { expenseReducers } from './expense/expense.reducers';
+import { ExpenseEffects } from './expense/expense.effects';
+import { expenseCategoryReducers } from './expense-category/expense-category.reducers';
+import { ExpenseCategoryEffects } from './expense-category/expense-category.effects';
 
 export const hydrationMetaReducer = (
   reducer: ActionReducer<LoginState>
@@ -34,6 +38,13 @@ export const AppStoreModule = [
   StoreModule.forFeature('login', loginReducer, {
     metaReducers: [hydrationMetaReducer],
   }),
+  StoreModule.forFeature('expense', expenseReducers),
+  StoreModule.forFeature('expenseCategory', expenseCategoryReducers),
   EffectsModule.forRoot([]),
-  EffectsModule.forFeature([RegisterEffects, LoginEffects]),
+  EffectsModule.forFeature([
+    RegisterEffects,
+    LoginEffects,
+    ExpenseEffects,
+    ExpenseCategoryEffects,
+  ]),
 ];

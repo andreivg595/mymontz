@@ -240,6 +240,7 @@ html {
    * https://ionicframework.com/docs/layout/dynamic-font-scaling
    */
   --ion-dynamic-font: var(--ion-default-dynamic-font);
+  @apply font-sans font-bold;
 
   ion-item {
     @apply rounded-xl;
@@ -256,7 +257,42 @@ html {
   ion-button {
     --border-radius: 10px !important;
   }
-  ion-tab-button.tab-selected {
-    --color-selected: var(--ion-color-tertiary);
+
+  ion-tab-bar {
+    bottom: 20px;
+    position: relative;
+    border-radius: 16px;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  ion-tab-button {
+    --color: var(--ion-color-medium);
+    --color-selected: var(--ion-color-primary);
+
+    &:hover {
+      --color-selected: var(--ion-color-tertiary);
+    }
+
+    &::before {
+      background-color: transparent;
+      display: block;
+      content: "";
+      margin: 0 auto;
+      width: 20px;
+      height: 2px;
+    }
+
+    &.tab-selected::before {
+      background-color: var(--ion-color-tertiary);
+    }
+
+    &.tab-selected {
+      --color-selected: var(--ion-color-tertiary);
+    }
+
+    &.ion-activated {
+      --color-selected: var(--ion-color-tertiary);
+    }
   }
 }

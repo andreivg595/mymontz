@@ -1,0 +1,15 @@
+.expense-form-container {
+  @apply w-full;
+
+  ion-select {
+    @apply my-1;
+  }
+
+  ion-item {
+    @apply mb-1;
+  }
+
+  &__button {
+    @apply w-full absolute bottom-0 mb-1;
+  }
+}
