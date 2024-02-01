@@ -4,9 +4,15 @@ import {
   addExpense,
   addExpenseFailure,
   addExpenseSuccess,
+  deleteExpense,
+  deleteExpenseFailure,
+  deleteExpenseSuccess,
   fetchExpenses,
   fetchExpensesFailure,
   fetchExpensesSuccess,
+  updateExpense,
+  updateExpenseFailure,
+  updateExpenseSuccess,
 } from './expense.actions';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -18,7 +24,7 @@ export class ExpenseEffects {
     private expenseService: ExpenseService
   ) {}
 
-  fetchExpenses$ = createEffect(() =>
+  readonly fetchExpenses$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fetchExpenses),
       switchMap(({ userId, startDate, endDate }) =>
@@ -30,13 +36,39 @@ export class ExpenseEffects {
     )
   );
 
-  addExpense$ = createEffect(() =>
+  readonly addExpense$ = createEffect(() =>
     this.actions$.pipe(
       ofType(addExpense),
       switchMap(({ expense }) =>
         this.expenseService.createExpense(expense).pipe(
           map((expense) => addExpenseSuccess({ expense })),
           catchError((error) => of(addExpenseFailure({ error })))
+        )
+      )
+    )
+  );
+
+  readonly updateExpense$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateExpense),
+      switchMap(({ expense }) =>
+        this.expenseService.updateExpense(expense).pipe(
+          map((expense) => updateExpenseSuccess({ expense })),
+          catchError((error) => of(updateExpenseFailure({ error })))
+        )
+      )
+    )
+  );
+
+  readonly deleteExpense$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteExpense),
+      switchMap(({ id }) =>
+        this.expenseService.deleteExpense(id).pipe(
+          map(() => deleteExpenseSuccess({ id })),
+          catchError((error) => {
+            return of(deleteExpenseFailure({ error }));
+          })
         )
       )
     )

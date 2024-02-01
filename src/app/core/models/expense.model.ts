@@ -4,7 +4,7 @@ import { User } from './user.model';
 export interface Expense {
   id: number;
   user: User;
-  expenseCategory: ExpenseCategory;
+  category: ExpenseCategory;
   date: Date;
   amount: number;
   note: string;

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ExpenseCategory } from 'src/app/core/models/expense-category';
 
@@ -7,13 +7,17 @@ import { ExpenseCategory } from 'src/app/core/models/expense-category';
   templateUrl: './expense-form.component.html',
   styleUrls: ['./expense-form.component.scss'],
 })
-export class ExpenseFormComponent {
+export class ExpenseFormComponent implements OnInit {
   @Input() form: FormGroup | undefined;
-  @Input() expenseCategories: ExpenseCategory[] | null | undefined;
+  @Input() categories: ExpenseCategory[] | null | undefined;
   @Output() formEvent = new EventEmitter<FormGroup>();
 
+  ngOnInit(): void {
+    this.categoryControl.setValue(this.categoryControl.value?.id);
+  }
+
   get categoryControl(): FormControl {
-    return this.form?.get('expenseCategory') as FormControl;
+    return this.form?.get('category') as FormControl;
   }
 
   get amountControl(): FormControl {

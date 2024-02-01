@@ -26,13 +26,29 @@ export class ExpenseService {
   }
 
   createExpense(expense: Expense): Observable<Expense> {
-    console.log(expense.date);
     const formData = new FormData();
     formData.append('amount', JSON.stringify(expense.amount));
     formData.append('userId', JSON.stringify(expense.user.id));
-    formData.append('categoryId', JSON.stringify(expense.expenseCategory.id));
+    formData.append('categoryId', JSON.stringify(expense.category.id));
     formData.append('date', expense.date.toISOString().slice(0, 10));
     formData.append('note', expense.note);
     return this.http.post<Expense>(`${this.url}/expense/create`, formData);
+  }
+
+  updateExpense(expense: Expense): Observable<Expense> {
+    const formData = new FormData();
+    formData.append('amount', JSON.stringify(expense.amount));
+    formData.append('userId', JSON.stringify(expense.user.id));
+    formData.append('categoryId', JSON.stringify(expense.category.id));
+    formData.append('note', expense.note);
+
+    return this.http.put<Expense>(
+      `${this.url}/expense/update/${expense.id}`,
+      formData
+    );
+  }
+
+  deleteExpense(id: number): Observable<Expense> {
+    return this.http.delete<Expense>(`${this.url}/expense/${id}`);
   }
 }

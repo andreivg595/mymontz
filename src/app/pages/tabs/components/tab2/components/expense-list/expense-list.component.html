@@ -1,9 +1,21 @@
-<ion-list *ngIf="expenses?.length">
+<ion-list *ngIf="expenses?.length" class="expense-list-container">
   <ion-item *ngFor="let expense of expenses; let index">
     <ion-avatar slot="start">
       <img [src]="'https://picsum.photos/80/80?random=' + index" alt="avatar" />
     </ion-avatar>
     <ion-label>{{ expense.amount }} €</ion-label>
     <ion-label>{{ expense.note }}</ion-label>
+    <div>
+      <ion-icon
+        name="create-outline"
+        class="expense-list-container__update-icon"
+        (click)="updateEvent.emit(expense)"
+      ></ion-icon>
+      <ion-icon
+        name="trash-bin-outline"
+        class="expense-list-container__delete-icon"
+        (click)="deleteExpense(expense)"
+      ></ion-icon>
+    </div>
   </ion-item>
 </ion-list>

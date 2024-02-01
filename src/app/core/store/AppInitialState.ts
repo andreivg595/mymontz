@@ -18,6 +18,13 @@ export const AppInitialState: AppState = {
   },
   expenses: {
     expenses: [],
+    error: null,
+    isDeleted: false,
+    isDeleting: false,
+    isUpdated: false,
+    isUpdating: false,
+    isCreated: false,
+    isCreating: false,
   },
   expenseCategories: {
     expenseCategories: [],

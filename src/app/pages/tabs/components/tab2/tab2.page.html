@@ -31,18 +31,24 @@
     >
   </div>
 
-  <app-expense-list [expenses]="expenses$ | async"></app-expense-list>
+  <app-expense-list
+    [expenses]="expenses$ | async"
+    (updateEvent)="onUpdate($event)"
+    (deleteEvent)="onDelete($event)"
+  ></app-expense-list>
 
   <ion-modal
     trigger="open-modal"
     [initialBreakpoint]="1"
     [breakpoints]="[0, 1]"
+    [isOpen]="isOpen"
+    (didDismiss)="onDidDismiss()"
   >
     <ng-template>
       <div class="expense-container__modal">
         <app-expense-form
           [form]="form"
-          [expenseCategories]="expenseCategories$ | async"
+          [categories]="expenseCategories$ | async"
           (formEvent)="onSubmit($event)"
         ></app-expense-form>
       </div>
