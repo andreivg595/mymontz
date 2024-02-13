@@ -25,6 +25,10 @@ export const AppInitialState: AppState = {
     isUpdating: false,
     isCreated: false,
     isCreating: false,
+    todayAmount: 0,
+    yesterdayAmount: 0,
+    weekAmount: 0,
+    monthAmount: 0,
   },
   expenseCategories: {
     expenseCategories: [],

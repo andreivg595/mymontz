@@ -9,4 +9,8 @@ export interface ExpenseState {
   isUpdating: boolean;
   isCreated: boolean;
   isCreating: boolean;
+  todayAmount: number;
+  yesterdayAmount: number;
+  weekAmount: number;
+  monthAmount: number;
 }

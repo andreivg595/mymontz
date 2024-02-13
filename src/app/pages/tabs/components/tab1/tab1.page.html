@@ -18,9 +18,17 @@
         {{ user?.username }}</span
       >!
     </div>
-    <div class="mymontz-container__today">Today: 0€</div>
-    <div class="mymontz-container__yesterday">Yesterday: 0€</div>
-    <div class="mymontz-container__week">This week: 0€</div>
-    <div class="mymontz-container__month">This month: 0€</div>
+    <div class="mymontz-container__today">
+      Today: {{ todayAmount$ | async }} €
+    </div>
+    <div class="mymontz-container__yesterday">
+      Yesterday: {{ yesterdayAmount$ | async }} €
+    </div>
+    <div class="mymontz-container__week">
+      This week: {{ weekAmount$ | async }} €
+    </div>
+    <div class="mymontz-container__month">
+      This month: {{ monthAmount$ | async }} €
+    </div>
   </div>
 </ion-content>

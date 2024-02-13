@@ -25,6 +25,21 @@ export class ExpenseService {
     return this.http.get<Expense[]>(`${this.url}/expense/expenses`, { params });
   }
 
+  getExpensesTotalAmountByDate(id: number, date: Date): Observable<number> {
+    const d = date.toISOString().slice(0, 10);
+    return this.http.get<number>(`${this.url}/expense/amount/${d}/${id}`);
+  }
+
+  getExpensesTotalAmountForWeek(id: number, date: Date): Observable<number> {
+    const d = date.toISOString().slice(0, 10);
+    return this.http.get<number>(`${this.url}/expense/amount/week/${d}/${id}`);
+  }
+
+  getExpensesTotalAmountForMonth(id: number, date: Date): Observable<number> {
+    const d = date.toISOString().slice(0, 10);
+    return this.http.get<number>(`${this.url}/expense/amount/month/${d}/${id}`);
+  }
+
   createExpense(expense: Expense): Observable<Expense> {
     const formData = new FormData();
     formData.append('amount', JSON.stringify(expense.amount));
