@@ -14,6 +14,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppStoreModule } from './core/store/AppStoreModule';
 import { AuthInterceptor } from './core/services/auth.interceptor';
+import { ErrorHandlerInterceptor } from './core/services/error-handler.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +31,11 @@ import { AuthInterceptor } from './core/services/auth.interceptor';
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlerInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

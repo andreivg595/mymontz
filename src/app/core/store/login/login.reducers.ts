@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { AppInitialState } from '../AppInitialState';
 import { LoginState } from './LoginState';
-import { login, loginFailure, loginSuccess } from './login.actions';
+import { login, loginFailure, loginSuccess, logout } from './login.actions';
 import { jwtDecode } from 'jwt-decode';
 import { User } from '../../models/user.model';
 import { Role } from '../../models/role.enum';
@@ -28,8 +28,8 @@ export const loginReducer = createReducer(
     isLoggedIn: false,
     isLoggingIn: false,
     error,
-  }))
-  //on(logout, () => initialState)
+  })),
+  on(logout, () => initialState)
 );
 function getUser(token: string): User {
   const decoded = jwtDecode(token) as JwtPayload;

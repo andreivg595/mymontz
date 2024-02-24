@@ -15,3 +15,5 @@ export const loginFailure = createAction(
   '[Login API] Login Failure',
   props<{ readonly error: any }>()
 );
+
+export const logout = createAction('[Login Page] Logout');
