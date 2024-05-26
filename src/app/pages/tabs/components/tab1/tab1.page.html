@@ -19,16 +19,16 @@
       >!
     </div>
     <div class="mymontz-container__today">
-      Today: {{ todayAmount$ | async }} €
+      Today: {{ todayAmount$ | async | number:'1.2-2' }} €
     </div>
     <div class="mymontz-container__yesterday">
-      Yesterday: {{ yesterdayAmount$ | async }} €
+      Yesterday: {{ yesterdayAmount$ | async | number:'1.2-2' }} €
     </div>
     <div class="mymontz-container__week">
-      This week: {{ weekAmount$ | async }} €
+      This week: {{ weekAmount$ | async | number:'1.2-2' }} €
     </div>
     <div class="mymontz-container__month">
-      This month: {{ monthAmount$ | async }} €
+      This month: {{ monthAmount$ | async | number:'1.2-2' }} €
     </div>
   </div>
 </ion-content>

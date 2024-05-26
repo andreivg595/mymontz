@@ -1,4 +1,8 @@
 .expense-list-container {
+  &__icon {
+    @apply mr-2;
+  }
+
   &__update-icon {
     @apply mr-1 cursor-pointer;
   }

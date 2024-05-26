@@ -67,6 +67,10 @@ export class Tab2Page implements OnInit, OnDestroy {
     this.checkExpenses();
   }
 
+  ionViewWillEnter(): void {
+    this.getExpenses();
+  }
+
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
   }
@@ -83,12 +87,7 @@ export class Tab2Page implements OnInit, OnDestroy {
   }
 
   modelChangeFn(selectedDate: Date): void {
-    const date = selectedDate as unknown as string;
-    const d = date.split('-');
-    const year = d[0];
-    const month = d[1];
-    const day = d[2];
-    this.date = new Date(+year, +month - 1, +day.split('T')[0]);
+    this.date = new Date(selectedDate);
     this.getExpenses();
   }
 
@@ -108,6 +107,7 @@ export class Tab2Page implements OnInit, OnDestroy {
         this.store.dispatch(show());
       } else {
         this.store.dispatch(hide());
+        this.form?.reset();
       }
 
       if (state.isDeleted) {
@@ -145,23 +145,21 @@ export class Tab2Page implements OnInit, OnDestroy {
   }
 
   onSubmit(form: FormGroup): void {
-    if (form?.valid) {
-      if (form.controls['id'].value) {
-        form?.controls['date'].setValue(new Date());
-        form?.controls['category'].setValue({
-          id: form.value.category,
-        });
-        this.store.dispatch(updateExpense({ expense: form.value }));
-      } else {
-        this.dateTime !== undefined
-          ? form?.controls['date'].setValue(this.date)
-          : form?.controls['date'].setValue(new Date());
-        form?.controls['user'].setValue(this.usr);
-        form?.controls['category'].setValue({
-          id: form.value.category,
-        });
-        this.store.dispatch(addExpense({ expense: form.value }));
-      }
+    if (form.controls['id'].value) {
+      form?.controls['date'].setValue(new Date());
+      form?.controls['category'].setValue({
+        id: form.value.category,
+      });
+      this.store.dispatch(updateExpense({ expense: form.value }));
+    } else {
+      this.dateTime !== undefined
+        ? form?.controls['date'].setValue(this.date)
+        : form?.controls['date'].setValue(new Date());
+      form?.controls['user'].setValue(this.usr);
+      form?.controls['category'].setValue({
+        id: form.value.category,
+      });
+      this.store.dispatch(addExpense({ expense: form.value }));
     }
   }
 
