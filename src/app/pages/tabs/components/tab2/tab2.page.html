@@ -33,6 +33,7 @@
 
   <app-expense-list
     [expenses]="expenses$ | async"
+    [isEditing]="true"
     (updateEvent)="onUpdate($event)"
     (deleteEvent)="onDelete($event)"
   ></app-expense-list>

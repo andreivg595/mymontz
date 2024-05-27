@@ -7,7 +7,6 @@ import { Tab2Page } from './tab2.page';
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ExpenseFormComponent } from './components/expense-form/expense-form.component';
-import { ExpenseListComponent } from './components/expense-list/expense-list.component';
 
 @NgModule({
   imports: [
@@ -18,6 +17,6 @@ import { ExpenseListComponent } from './components/expense-list/expense-list.com
     ReactiveFormsModule,
     SharedModule,
   ],
-  declarations: [Tab2Page, ExpenseFormComponent, ExpenseListComponent],
+  declarations: [Tab2Page, ExpenseFormComponent],
 })
 export class Tab2PageModule {}

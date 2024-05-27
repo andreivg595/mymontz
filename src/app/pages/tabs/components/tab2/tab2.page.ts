@@ -12,6 +12,7 @@ import {
   addExpense,
   deleteExpense,
   fetchExpenses,
+  purgeExpenses,
   updateExpense,
 } from 'src/app/core/store/expense/expense.actions';
 import {
@@ -68,7 +69,7 @@ export class Tab2Page implements OnInit, OnDestroy {
   }
 
   ionViewWillEnter(): void {
-    this.getExpenses();
+    this.store.dispatch(purgeExpenses());
   }
 
   ngOnDestroy(): void {

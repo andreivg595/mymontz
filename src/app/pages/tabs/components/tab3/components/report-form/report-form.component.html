@@ -1,0 +1,53 @@
+<form
+  *ngIf="form"
+  class="report-form-container"
+  [formGroup]="form"
+  (ngSubmit)="formEvent.emit(form)"
+>
+  <ion-item>
+    <ion-input
+      id="date1"
+      label="Start date"
+      aria-label="Start date"
+      label-placement="floating"
+      value="{{ startDateControl.value | date : 'dd/MM/yyyy' }}"
+    ></ion-input>
+    <ion-popover trigger="date1">
+      <ng-template>
+        <ion-datetime
+          presentation="date"
+          locale="en-EN"
+          (ionChange)="updateStartDate($event)"
+        ></ion-datetime>
+      </ng-template>
+    </ion-popover>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      id="date2"
+      label="End date"
+      aria-label="End date"
+      label-placement="floating"
+      value="{{ endDateControl.value | date : 'dd/MM/yyyy' }}"
+    ></ion-input>
+    <ion-popover trigger="date2">
+      <ng-template>
+        <ion-datetime
+          presentation="date"
+          locale="en-EN"
+          (ionChange)="updateEndDate($event)"
+        ></ion-datetime>
+      </ng-template>
+    </ion-popover>
+  </ion-item>
+
+  <ion-button
+    type="submit"
+    color="tertiary"
+    size="full"
+    shape="round"
+    [disabled]="!form.valid"
+    >Search</ion-button
+  >
+</form>

@@ -1,4 +1,7 @@
 <ion-list *ngIf="expenses?.length" class="expense-list-container">
+  <div *ngIf="!isEditing" class="expense-list-container__total">
+    <span>Total amount: {{ getTotal() }} €</span>
+  </div>
   <ion-item *ngFor="let expense of expenses; let index">
     <ion-icon
       slot="start"
@@ -7,7 +10,7 @@
     ></ion-icon>
     <ion-label>{{ expense.amount }} €</ion-label>
     <ion-label>{{ expense.note }}</ion-label>
-    <div>
+    <div *ngIf="isEditing">
       <ion-icon
         name="create-outline"
         class="expense-list-container__update-icon"

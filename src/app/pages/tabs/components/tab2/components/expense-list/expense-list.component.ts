@@ -10,6 +10,7 @@ import { Type } from 'src/app/core/models/type.enum';
 })
 export class ExpenseListComponent {
   @Input() expenses: Expense[] | null | undefined;
+  @Input() isEditing = false;
   @Output() readonly updateEvent = new EventEmitter<Expense>();
   @Output() readonly deleteEvent = new EventEmitter<Expense>();
 
@@ -66,5 +67,11 @@ export class ExpenseListComponent {
         return 'cash-outline';
     }
     return 'help-circle-outline';
+  }
+
+  getTotal(): number {
+    return (
+      this.expenses?.reduce((total, expense) => total + expense.amount, 0) || 0
+    );
   }
 }

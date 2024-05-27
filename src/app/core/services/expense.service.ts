@@ -17,6 +17,7 @@ export class ExpenseService {
     startDate: Date,
     endDate: Date
   ): Observable<Expense[]> {
+    console.log(id, startDate, endDate);
     let params = new HttpParams();
     params = params.append('id', id);
     params = params.append('startDate', startDate.toISOString().slice(0, 10));

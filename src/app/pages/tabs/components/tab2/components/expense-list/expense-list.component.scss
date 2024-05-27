@@ -1,4 +1,10 @@
 .expense-list-container {
+  @apply pb-8;
+
+  &__total {
+    @apply text-center py-2 text-lg;
+  }
+
   &__icon {
     @apply mr-2;
   }

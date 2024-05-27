@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-title> Tab 3 </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,5 +11,10 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div class="report-container">
+    <app-report-form [form]="form" (formEvent)="onSubmit($event)">
+    </app-report-form>
+  </div>
+
+  <app-expense-list [expenses]="expenses$ | async"></app-expense-list>
 </ion-content>

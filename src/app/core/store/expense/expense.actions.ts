@@ -120,3 +120,5 @@ export const deleteExpenseFailure = createAction(
   '[Expense API] Delete Expense Failure',
   props<{ readonly error: any }>()
 );
+
+export const purgeExpenses = createAction('[Expenses] Purge Expenses');
